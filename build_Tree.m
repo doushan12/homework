@@ -1,5 +1,5 @@
 %生成决策树
-function []=GrowTree(train,label,thredhold)
+function []=build_Tree(train,label,thredhold)
 Index=(doclabel>0);
 if_choosed=true(size(train,2),1);
 imp=count_impurity(label,Index);

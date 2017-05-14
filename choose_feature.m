@@ -1,5 +1,5 @@
 %根据不纯度下降值选取特征
-function [feature,pos_imp,neg_imp]=choose_feature(...
+function [feature,pos_imp,neg_imp,imp_max]=choose_feature(...
     train,label,imp,if_choosed,Index)
 n=sum(Index);
 feature_num=length(if_choosed);
@@ -21,6 +21,10 @@ for i=1:feature_num
     
     end
 end
+
+[imp_max,feature]=max(imp_decrease);
+pos_imp=pos_imps(feature);
+neg_imp=neg_imps(feature);
 
 
 
