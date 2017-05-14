@@ -5,6 +5,18 @@ if_choosed=true(size(train,2),1);
 imp=count_impurity(label,Index);
 feature=choose_feature(train,label,imp,if_choosed,Index);
 if_choosed(feature)=false;
+pos_Index=Index&(train(Index,feature)==1);
+neg_Index=Index&(train(Index,feature)==0);
+
+%´´½¨×óÓÒ×ÓÊ÷
+leaf_principles={};
+leaf_class=[];
+
+principle(1)={feature};
+
+[principle, leaf_principles, leaf_class] = GrowTree(...
+    train, label, pos_Index, if_choosed, imp, principle, leaf_principles, leaf_class, threshold);
+
 
 
 end
