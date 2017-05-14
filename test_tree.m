@@ -1,5 +1,5 @@
 %% ²âÊÔ¾ö²ßÊ÷
-function accuracy=test_tree(data,label,leaf_principles,leaf_class)
+function [accuracy,class]=test_tree(data,label,leaf_principles,leaf_class)
 n=size(data,1);
 leaf_n=length(leaf_principles);
 class=zeros(n,1);
@@ -17,5 +17,5 @@ for i=1:n
         
     end
 end
-accuracy=sum(class==label)/n;
+accuracy=double(sum(class==label))/double(n);
 end

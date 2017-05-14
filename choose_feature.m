@@ -14,8 +14,8 @@ for i=1:feature_num
     pos_imps(i)=count_impurity(label,pos_Index);
     neg_imps(i)=count_impurity(label,neg_Index);
     %信息增益
-    imp_decrease(i)=imp- pos_imps(i)*sum( pos_Index)/n...
-        -neg_imps(i)*sum(neg_Index)/n;
+    imp_decrease(i)=imp- pos_imps(i)*double(sum( pos_Index))/double(n)...
+        -neg_imps(i)*double(sum(neg_Index))/double(n);
     %信息增益率
     %imp_decrease(i)=imp_decrease(i)/count_impurity(label,Index);
     

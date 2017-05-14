@@ -2,8 +2,8 @@
 %% 初始化
 clear;
 load('Sogou_webpage.mat')
-% doclabel = int16(doclabel);
-% wordMat = int16(wordMat);
+doclabel = int16(doclabel);
+wordMat = int16(wordMat);
 
 %% 取wordmat的1/5为测试集，4/5为训练集
 delta=5;
