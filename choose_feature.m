@@ -1,4 +1,4 @@
-%根据不纯度下降值选取特征
+%% 根据不纯度下降值选取特征
 function [feature,pos_imp,neg_imp,imp_max]=choose_feature(...
     train,label,imp,if_choosed,Index)
 n=sum(Index);

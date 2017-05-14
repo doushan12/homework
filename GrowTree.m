@@ -1,4 +1,4 @@
-%决策树递归
+%% 决策树递归
 function [principle, leaf_principles, leaf_class] = GrowTree(...
     train, label, Index, if_choosed, imp, principle, leaf_principles, leaf_class, threshold)
 %% 终值条件

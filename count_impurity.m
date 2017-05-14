@@ -1,4 +1,4 @@
-%计算熵不纯度
+%% 计算熵不纯度
 function imp=count_impurity(label,Index)
 n=sum(Index);
 label_now=label(Index);%当前要计算的样本
