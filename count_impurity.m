@@ -3,7 +3,7 @@ function imp=count_impurity(label,Index)
 n=sum(Index);
 label_now=label(Index);%当前要计算的样本
 class_type=unique(label_now);
-p_temp=zeros(class_type,1);
+p_temp=zeros(length(class_type),1);
 for i=1:length(class_type)
     p_temp(i)=sum(label_now==class_type(i));
 end

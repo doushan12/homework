@@ -1,6 +1,6 @@
 %% 生成决策树
-function [leaf_principles, leaf_class]=build_Tree(train,label,thredhold)
-Index=(doclabel>0);
+function [leaf_principles, leaf_class]=build_Tree(train,label,threshold)
+Index=(label>0);
 if_choosed=true(size(train,2),1);
 imp=count_impurity(label,Index);
 %选取特征
@@ -8,8 +8,8 @@ feature=choose_feature(train,label,imp,if_choosed,Index);
 if_choosed(feature)=false;
 
 %分左右子树样本
-pos_Index=Index&(train(Index,feature)==1);
-neg_Index=Index&(train(Index,feature)==0);
+pos_Index=Index&(train(:,feature)==1);
+neg_Index=Index&(train(:,feature)==0);
 
 leaf_principles={};
 leaf_class=[];

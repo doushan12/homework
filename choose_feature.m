@@ -5,12 +5,12 @@ n=sum(Index);
 feature_num=length(if_choosed);
 pos_imps=zeros(feature_num,1);
 neg_imps=zeros(feature_num,1);
-imp_decrease=-ones(feature_num)*inf;
+imp_decrease=-ones(feature_num,1)*inf;
 
 for i=1:feature_num
     if if_choosed(i)
-    pos_Index=Index*(train(:,i)==1);
-    neg_Index=Index*(train(:,i)==0);
+    pos_Index=Index&(train(:,i)==1);
+    neg_Index=Index&(train(:,i)==0);
     pos_imps(i)=count_impurity(label,pos_Index);
     neg_imps(i)=count_impurity(label,neg_Index);
     %信息增益
