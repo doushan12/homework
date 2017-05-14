@@ -19,6 +19,8 @@ test_label=doclabel_rand(0.8*n+1:end,:);
 %% 决策树生成
 threshold=[0.05 0.07 0.1];
 for i=1:length(threshold)
-    []=GrowTree(train_word,train_label,threshold(i));
+    [leaf_principles, leaf_class]=build_Tree(train_word,train_label,threshold(i));
+    train_acc=test_tree(train_word,train_label,leaf_principles,leaf_class);
+    test_acc=test_tree(test_word,test_label,leaf_principles,leaf_class);
 end
 
