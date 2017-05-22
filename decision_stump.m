@@ -22,19 +22,25 @@ d_p=zeros(p,1);
 for i=1:p
     [X_isort,X_iseq]=sort(X(:,i));
     cumsum_yw=cumsum(y(X_iseq).*w(X_iseq));%cumulative sum of elements.
-    [c_max,c_maxseq]=max(cumsum_yw);
-    [c_min,c_minseq]=min(cumsum_yw);
+    [~,c_maxseq]=max(cumsum_yw);
+    [~,c_minseq]=min(cumsum_yw);
     
-    if abs(c_max)>abs(c_min)
+     %count the error rate
+    err1 = abs(sum(w(X(:, i) <= X_isort(c_maxseq)) .* (1 ~= y(X(:, i) <= X_isort(c_maxseq))))) + ...
+        abs(sum(w(X(:, i) > X_isort(c_maxseq)) .* (-1 ~= y(X(:, i) > X_isort(c_maxseq)))));
+    err2 = abs(sum(w(X(:, i) <= X_isort(c_minseq)) .* (-1 ~= y(X(:, i) <= X_isort(c_minseq))))) + ...
+        abs(sum(w(X(:, i) > X_isort(c_minseq)) .* (1 ~= y(X(:, i) > X_isort(c_minseq)))));
+    
+    if err1<err2
         d_p(i)=1;
         a_p(i)=X_isort(c_maxseq);
+        error(i)=err1;
     else
         d_p(i)=-1;
         a_p(i)=X_isort(c_minseq);
+        error(i)=err2;
     end
-    %count the error rate
-    error(i)=abs(sum(d_p(i)-y(X(:,i)<=a_p(i))))+abs(sum(d_p(i)+y(X(:,i)>a_p(i))));
-       
+         
 end
 
 [~,k]=min(error);
