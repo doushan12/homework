@@ -14,7 +14,9 @@ function w_update = update_weights(X, y, k, a, d, w, alpha)
 %     w_update : n * 1 vector, the updated weights
 
 %%% Your Code Here %%%
-
+y_temp = ((X(:, k) <= a) * 2 - 1) * d;
+w_update = w .* exp(alpha * (y_temp ~= y));
+w_update = w_update / sum(w_update);
 %%% Your code Here %%%
 
 end
