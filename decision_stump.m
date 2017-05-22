@@ -20,7 +20,7 @@ a_p=zeros(p,1);
 d_p=zeros(p,1);
 
 for i=1:p
-    [X_isort,X_iseq]=sort(X(:,i), 'ascend');
+    [X_isort,X_iseq]=sort(X(:,i));
     cumsum_yw=cumsum(y(X_iseq).*w(X_iseq));%cumulative sum of elements.
     [~,c_maxseq]=max(cumsum_yw);
     [~,c_minseq]=min(cumsum_yw);
