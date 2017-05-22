@@ -15,7 +15,7 @@ function e = adaboost_error(X, y, k, a, d, alpha)
 %%% Your Code Here %%%
 
 n=size(X,1);
-iter=(k>0);
+iter=sum(k>0);
 
 y_esti = zeros(n, 1);
 for i = 1:iter
